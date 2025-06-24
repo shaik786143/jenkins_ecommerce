@@ -61,6 +61,13 @@ pipeline {
                 echo 'This is a placeholder. A real deployment script would go here.'
             }
         }
+
+        stage('Test') {
+            steps {
+                sh 'python manage.py migrate'
+                sh 'pytest'
+            }
+        }
     }
 
     post {

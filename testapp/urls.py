@@ -12,4 +12,5 @@ urlpatterns = [
     path("", include(router.urls)),
     path("create-payment-intent/", views.create_payment_intent, name="create_payment_intent"),
     path("stripe-webhook/", views.stripe_webhook, name="stripe_webhook"),
+    path('products/', views.ProductListView.as_view(), name='product-list'),
 ] 

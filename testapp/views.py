@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from rest_framework import viewsets
+from rest_framework import viewsets, generics
 from .models import Product, Sale
 from .serializers import ProductSerializer, SaleSerializer
 from django.core.cache import cache
@@ -97,3 +97,7 @@ def stripe_webhook(request):
         # Sale.objects.create(...)
         
     return JsonResponse({"status": "success"})
+
+class ProductListView(generics.ListAPIView):
+    queryset = Product.objects.all()
+    serializer_class = ProductSerializer
