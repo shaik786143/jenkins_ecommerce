@@ -11,16 +11,25 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
 from pathlib import Path
+import os
+from dotenv import load_dotenv
+import sys
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+load_dotenv()
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-^+=s8r5=c9m6$=tu&916wtbkd04=&=*get*z^o%@on6#(m(yc&'
+STRIPE_PUBLISHABLE_KEY = os.environ.get("STRIPE_PUBLISHABLE_KEY")
+STRIPE_SECRET_KEY = os.environ.get("STRIPE_SECRET_KEY")
+
+# Use a dummy Stripe key for testing if the real one is not set
+if 'test' in sys.argv:
+    STRIPE_SECRET_KEY = "sk_test_dummy"
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
