@@ -13,7 +13,7 @@ pipeline {
             steps {
                 script {
                     echo 'Installing Python dependencies...'
-                    sh 'pip install -r requirements.txt'
+                    bat 'pip install -r requirements.txt'
                 }
             }
         }
@@ -22,7 +22,7 @@ pipeline {
             steps {
                 script {
                     echo 'Running tests...'
-                    sh 'pytest'
+                    bat 'pytest'
                 }
             }
         }
@@ -32,7 +32,7 @@ pipeline {
                 script {
                     echo "Building Docker image ${IMAGE_NAME}:${IMAGE_TAG}..."
                     // Assumes Docker is configured in the Jenkins environment
-                    sh "docker build -t ${IMAGE_NAME}:${IMAGE_TAG} ."
+                    bat "docker build -t ${IMAGE_NAME}:${IMAGE_TAG} ."
                 }
             }
         }
@@ -46,7 +46,7 @@ pipeline {
                     echo "Skipping Docker push for this example..."
                     // Example command:
                     // withCredentials([dockerServer(credentialsId: 'dockerhub-creds')]) {
-                    //   sh "docker push ${IMAGE_NAME}:${IMAGE_TAG}"
+                    //   bat "docker push ${IMAGE_NAME}:${IMAGE_TAG}"
                     // }
                 }
             }
