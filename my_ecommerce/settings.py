@@ -63,6 +63,9 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+if 'test' in sys.argv:
+    MIDDLEWARE.remove('django.contrib.messages.middleware.MessageMiddleware')
+
 ROOT_URLCONF = 'my_ecommerce.urls'
 
 TEMPLATES = [
