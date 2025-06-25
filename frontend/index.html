@@ -9,12 +9,49 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body class="bg-light">
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary mb-4">
-        <div class="container-fluid">
-            <span class="navbar-brand mb-0 h1 mx-auto">E-Commerce Analytics Dashboard</span>
+    <header>
+        <div class="container">
+            <h1>E-Commerce Analytics Dashboard</h1>
+            <nav>
+                <a href="#">Home</a>
+                <a href="#products">Products</a>
+                <a href="#contact">Contact</a>
+            </nav>
         </div>
-    </nav>
-    <main class="container">
+    </header>
+    <main>
+        <section class="hero">
+            <div class="container">
+                <h2>Welcome to the Best Online Store!</h2>
+                <p>Find the best products at unbeatable prices.</p>
+                <a href="#products" class="btn-primary">Shop Now</a>
+            </div>
+        </section>
+        <section id="products" class="products-section">
+            <div class="container">
+                <h2>Featured Products</h2>
+                <div class="product-grid">
+                    <div class="product-card">
+                        <img src="https://via.placeholder.com/150" alt="Product 1">
+                        <h3>Product 1</h3>
+                        <p class="price">$19.99</p>
+                        <button class="btn-secondary">Add to Cart</button>
+                    </div>
+                    <div class="product-card">
+                        <img src="https://via.placeholder.com/150" alt="Product 2">
+                        <h3>Product 2</h3>
+                        <p class="price">$29.99</p>
+                        <button class="btn-secondary">Add to Cart</button>
+                    </div>
+                    <div class="product-card">
+                        <img src="https://via.placeholder.com/150" alt="Product 3">
+                        <h3>Product 3</h3>
+                        <p class="price">$39.99</p>
+                        <button class="btn-secondary">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+        </section>
         <div id="global-alert" class="alert" role="alert" style="display: none;">
             <!-- Success/Error message will be injected here -->
         </div>
@@ -86,6 +123,11 @@
             </div>
         </div>
     </main>
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 E-Commerce Analytics Dashboard. All rights reserved.</p>
+        </div>
+    </footer>
     <script src="https://js.stripe.com/v3/"></script>
     <script src="main.js"></script>
 </body>
