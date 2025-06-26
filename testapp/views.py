@@ -99,5 +99,5 @@ def stripe_webhook(request):
     return JsonResponse({"status": "success"})
 
 class ProductListView(generics.ListAPIView):
-    queryset = Product.objects.all()
+    queryset = Product.objects.all().order_by('-created_at')
     serializer_class = ProductSerializer
