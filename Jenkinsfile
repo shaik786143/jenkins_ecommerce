@@ -65,7 +65,7 @@ pipeline {
         stage('Test') {
             steps {
                 sh 'python manage.py migrate'
-                sh 'pytest'
+                bat 'pytest'
             }
         }
     }
