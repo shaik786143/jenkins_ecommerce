@@ -10,6 +10,7 @@ from django.conf import settings
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 import json
+import time
 
 stripe.api_key = settings.STRIPE_SECRET_KEY
 
@@ -101,3 +102,15 @@ def stripe_webhook(request):
 class ProductListView(generics.ListAPIView):
     queryset = Product.objects.all().order_by('-created_at')
     serializer_class = ProductSerializer
+
+def test_product_list_api():
+    Product.objects.create(name="Test Product 1", price=10.00, inventory=100)
+    time.sleep(0.1)  # Add a small delay
+    Product.objects.create(name="Test Product 2", price=20.00, inventory=50)
+
+    client = APIClient()
+    response = client.get("/api/products/")
+
+    assert response.status_code == 200
+    assert len(response.data) == 2
+    assert response.data[0]["name"] == "Test Product 2"  # Sorted by -created_at
